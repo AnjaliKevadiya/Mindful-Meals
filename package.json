@@ -1,0 +1,21 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "front end: -create sign up and sign in page for users to create a profile -create home page to show if user succesfully signs in -first time log in prompt goals quiz -create place for user to search food and see nutrition information -create a button to add food item to diet plan -create profile screen (first name, last name, height, current weight, target weight)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnjaliKevadiya/project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnjaliKevadiya/project2/issues"
+  },
+  "homepage": "https://github.com/AnjaliKevadiya/project2#readme"
+}
