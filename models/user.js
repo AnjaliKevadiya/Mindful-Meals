@@ -5,31 +5,31 @@ module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     first_name: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: true,
     },
     last_name: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: true,
     },
     age: {
       type: DataTypes.INTEGER,
-      allownull: false,
+      allowNull: true,
     },
     height: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: true,
     },
     weight: {
       type: DataTypes.DECIMAL,
-      allownull: false,
+      allowNull: true,
     },
     no_of_active_days: {
       type: DataTypes.INTEGER,
-      allownull: false,
+      allowNull: true,
     },
     lose_or_gain_weight: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
