@@ -18,4 +18,4 @@ module.exports = function(app) {
           //logic for deleting dailyIntake(food) item
       // });   
 
-}
+};

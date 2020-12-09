@@ -46,4 +46,8 @@ module.exports = function (app) {
       });
     }
   });
+
+  // app.get("/api/user_info", function (req, res) {
+
+  // })
 };
