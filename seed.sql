@@ -20,3 +20,12 @@ VALUES
     ("milkshake", CURDATE(), CURDATE(), 3);
 
 -- Nutrients --
+INSERT INTO Nutrients
+    (protein, carbs, fats, fiber, calories, createdAt, updatedAt, DailyIntakeId)
+VALUES
+    (1, 2, 3, 4, 5, CURDATE(), CURDATE(), 1),
+    (2, 3, 4, 5, 20, CURDATE(), CURDATE(), 2),
+    (1, 2, 3, 4, 10, CURDATE(), CURDATE(), 3),
+    (1, 2, 3, 4, 50, CURDATE(), CURDATE(), 4),
+    (1, 2, 3, 4, 5, CURDATE(), CURDATE(), 5),
+    (1, 2, 3, 4, 100, CURDATE(), CURDATE(), 6);
