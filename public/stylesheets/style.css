@@ -2,3 +2,8 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.container {
+  margin: 100px;
+  padding: 100px;
+}
