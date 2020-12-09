@@ -1,13 +1,17 @@
 var db = require("../models");
 
 module.exports = function(app) {
-    app.post(“/api/addIntake”, function (req, res) {
+    app.post("/api/addIntake", function (req, res) {
+        console.log(req.body);
         //logic for inserting data into dailyIntake
+        db.DailyIntake.create(req.body).then(function (dbDailyIntake) {
+            res.json(dbDailyIntake);
+        });
         //add to dailyintake seperate query for this
         //also for neutient table
     });
 
-    app.get(“/api/getIntake”, function (req, res) {
+    app.get("/api/getIntake", function (req, res) {
           //logic for querying data to get all dailyIntake
     });
       //app.delete(“/api/deleteIntake”, function (req, res) {
