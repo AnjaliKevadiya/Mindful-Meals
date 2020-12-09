@@ -18,3 +18,7 @@ h2,.btn{
   color: rgb(0, 0, 0);
 }
 
+.bor {
+  border: 10px solid black;
+}
+
