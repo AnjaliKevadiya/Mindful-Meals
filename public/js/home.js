@@ -28,28 +28,27 @@ $(document).ready(function () {
     $.get(`/api/search?name=${name}`).then(function (data) {
       console.log(data);
       // If there's an error, handle it by throwing up a bootstrap alert
+      //When rendering search data, create a add button with a data-label attribute
     });
   }
 
-  $.post("/api/addIntake/name").then(function (result) {
-    console.log(result);
-  });
-  
   var addBtn = $("#add");
-  var searchInput = $("#input-search");
 
   //When add button is clicked
   addBtn.on("click", function (event) {
-    var searchIn = $("#input-search");
+    var label = $(this).data("label").val().trim()
     event.preventDefault();
-    var searchData = {
-      name: searchInput.val().trim(),
+    var foodData = {
+      name_of_food: label,
     };
 
-    if (!searchData.name) {
-      searchInput.val("");
+    if (!foodData.name_of_food) {
       return;
     }
+
+    $.post("/api/addIntake", foodData).then(function (result) {
+      console.log(result);
+    });
 
   })
 });
