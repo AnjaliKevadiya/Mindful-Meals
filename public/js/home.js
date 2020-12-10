@@ -10,7 +10,6 @@ $(document).ready(function () {
 
   // When the signup button is clicked, we validate the email and password are not blank
   searchBtn.on("click", function (event) {
-    var searchIn = $("#input-search");
     event.preventDefault();
     var searchData = {
       name: searchInput.val().trim(),
