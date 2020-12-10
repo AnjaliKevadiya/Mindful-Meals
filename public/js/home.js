@@ -29,10 +29,5 @@ $(document).ready(function () {
       console.log(data);
       // If there's an error, handle it by throwing up a bootstrap alert
     });
-
-    // $.post("/api/addIntake", data).then(function (data) {
-    //   console.log(data);
-    //   // If there's an error, handle it by throwing up a bootstrap alert
-    // });
   }
 });
