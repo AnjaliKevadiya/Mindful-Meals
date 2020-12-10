@@ -30,9 +30,27 @@ $(document).ready(function () {
       console.log(data);
       // If there's an error, handle it by throwing up a bootstrap alert
     });
-
-    $.post("/api/addIntake/name").then(function (result) {
-      console.log(result);
-    });
   }
+
+  $.post("/api/addIntake/name").then(function (result) {
+    console.log(result);
+  });
+  
+  var addBtn = $("#add");
+  var searchInput = $("#input-search");
+
+  //When add button is clicked
+  addBtn.on("click", function (event) {
+    var searchIn = $("#input-search");
+    event.preventDefault();
+    var searchData = {
+      name: searchInput.val().trim(),
+    };
+
+    if (!searchData.name) {
+      searchInput.val("");
+      return;
+    }
+
+  })
 });
