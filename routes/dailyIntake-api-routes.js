@@ -10,7 +10,7 @@ module.exports = function(app) {
         //logic for inserting data into dailyIntake
         db.DailyIntake.create(req.body).then(function (dbDailyIntake) {
             res.json(dbDailyIntake);
-        });
+        })
         //add to dailyintake seperate query for this
         //also for nutrient table
     });
