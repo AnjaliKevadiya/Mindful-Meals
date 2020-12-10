@@ -2,13 +2,17 @@ var db = require("../models");
 
 module.exports = function(app) {
     app.post("/api/addIntake", function (req, res) {
-        console.log(req.body.text);
+        console.log(req.body);
+        db.dailyIntake.create({
+            name_of_food: req.body.name_of_food,
+            id: req.body.id
+        })
         //logic for inserting data into dailyIntake
-        db.DailyIntake.create(req.body.text).then(function (dbDailyIntake) {
+        db.DailyIntake.create(req.body).then(function (dbDailyIntake) {
             res.json(dbDailyIntake);
         });
         //add to dailyintake seperate query for this
-        //also for neutient table
+        //also for nutrient table
     });
 
     app.get("/api/getIntake", function (req, res) {
