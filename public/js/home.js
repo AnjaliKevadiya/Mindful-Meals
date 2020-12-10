@@ -10,7 +10,6 @@ $(document).ready(function () {
 
   // When the signup button is clicked, we validate the email and password are not blank
   searchBtn.on("click", function (event) {
-    var searchIn = $("#input-search");
     event.preventDefault();
     var searchData = {
       name: searchInput.val().trim(),
@@ -30,5 +29,10 @@ $(document).ready(function () {
       console.log(data);
       // If there's an error, handle it by throwing up a bootstrap alert
     });
+
+    // $.post("/api/addIntake", data).then(function (data) {
+    //   console.log(data);
+    //   // If there's an error, handle it by throwing up a bootstrap alert
+    // });
   }
 });
