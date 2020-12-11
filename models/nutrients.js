@@ -1,23 +1,23 @@
 module.exports = function (sequelize, DataTypes) {
   var Nutrients = sequelize.define("Nutrients", {
     protein: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
     carbs: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
     fats: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
     fiber: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
     calories: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
   });
