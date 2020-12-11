@@ -52,4 +52,24 @@ module.exports = function (app) {
   // app.get("/api/user_info", function (req, res) {
 
   // })
+
+  app.post("/api/contact", function (req, res) {
+    var contactObj = {
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    };
+
+    if (req.body.phonenumber.length > 0) {
+      contactObj.phonenumber = req.body.phonenumber;
+    }
+
+    db.Contact.create(contactObj)
+      .then(function () {
+        res.json(contactObj);
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
 };

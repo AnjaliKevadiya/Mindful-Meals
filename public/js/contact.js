@@ -7,7 +7,7 @@ $(document).ready(function () {
   var textareaMessage = $("textarea#textareaMessage");
 
   // When the send button is clicked, we validate the name, email, message are not blank
-  contactForm.on("click", function (event) {
+  contactForm.on("submit", function (event) {
     event.preventDefault();
     var userData = {
       name: inputName.val().trim(),
@@ -16,11 +16,10 @@ $(document).ready(function () {
       message: textareaMessage.val().trim(),
     };
 
-    if (
-      !userData.inputName ||
-      !userData.inputEmail ||
-      !userData.textareaMessage
-    ) {
+    console.log("user", JSON.stringify(userData));
+
+    if (!userData.name || !userData.email || !userData.message) {
+      console.log("hit contact");
       return;
     }
     // If we have an name, email and message run the signUpUser function

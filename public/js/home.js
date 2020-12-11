@@ -27,13 +27,14 @@ $(document).ready(function () {
   function searchForFoodNuterients(name) {
     $.get(`/api/search?name=${name}`).then(function (data) {
       console.log(data);
-      $(".foodContainer").empty()
+      $(".foodContainer").empty();
 
-      if(!data.parsed[0]){
-        $(".foodContainer2").append(`<h3>Nutrition facts for ${name} are not found</h3><br><h3>Please try again</h3>`)
-      }else{
-
-      $(".foodContainer").append(`
+      if (!data.parsed[0]) {
+        $(".foodContainer2").append(
+          `<h3>Nutrition facts for ${name} are not found</h3><br><h3>Please try again</h3>`
+        );
+      } else {
+        $(".foodContainer").append(`
 
       <div class="card text-center">
       <div class="card-header">
@@ -44,7 +45,8 @@ $(document).ready(function () {
         <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
         <a href="#" class="btn btn-primary" id="add" >Add</a>
       </div>
-            `)}
+            `);
+      }
       // If there's an error, handle it by throwing up a bootstrap alert
       //When rendering search data, create a add button with a data-label attribute
     });
