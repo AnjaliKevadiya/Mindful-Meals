@@ -16,10 +16,7 @@ $(document).ready(function () {
       message: textareaMessage.val().trim(),
     };
 
-    console.log("user", JSON.stringify(userData));
-
     if (!userData.name || !userData.email || !userData.message) {
-      console.log("hit contact");
       return;
     }
     // If we have an name, email and message run the signUpUser function
