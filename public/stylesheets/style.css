@@ -7,3 +7,25 @@ form.login {
   text-align: center;
 }
 
+body,h2{
+  background-color: #556b2f;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+h2,.btn{
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.bor {
+  border: 10px solid black;
+}
+
+
+a {
+  color: rgb(177, 177, 36)
+}
+
+
+
