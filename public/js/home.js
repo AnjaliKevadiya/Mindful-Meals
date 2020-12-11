@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   //When add button is clicked
   addBtn.on("click", function (event) {
-    var label = $(this).data("label").val().trim()
+    var label = $(this).data("label").val().trim();
     event.preventDefault();
     var foodData = {
       name_of_food: label,
@@ -49,6 +49,5 @@ $(document).ready(function () {
     $.post("/api/addIntake", foodData).then(function (result) {
       console.log(result);
     });
-
-  })
+  });
 });
