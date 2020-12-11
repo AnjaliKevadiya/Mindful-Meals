@@ -26,6 +26,7 @@ module.exports = function (app) {
       where: {
         UserId: req.params.user_id,
       },
+      include: db.Nutrients,
     }).then(function (dbDailyIntake) {
       res.json(dbDailyIntake);
     });
