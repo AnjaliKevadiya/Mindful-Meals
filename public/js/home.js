@@ -42,7 +42,7 @@ $(document).ready(function () {
       <div class="card-body bg-success">
         <h5 class="card-title">Nutrients:</h5>
         <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
-        <a href="#" class="btn btn-primary">Add</a>
+        <a href="#" class="btn btn-primary" id="add" >Add</a>
       </div>
             `)}
       // If there's an error, handle it by throwing up a bootstrap alert
