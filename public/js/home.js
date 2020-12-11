@@ -58,7 +58,7 @@ $(document).ready(function () {
         var fatsVal = data.parsed[0].food.nutrients.FAT;
         var fiberVal = data.parsed[0].food.nutrients.FIBTG;
         var caloriesVal = data.parsed[0].food.nutrients.ENERC_KCAL
-
+        
         event.preventDefault();
         var foodData = {
           name_of_food: nameVal,

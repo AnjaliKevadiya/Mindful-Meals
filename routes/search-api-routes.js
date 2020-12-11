@@ -14,6 +14,7 @@ module.exports = function (app) {
       res.json({
         text: response.data.text,
         parsed: response.data.parsed,
+        hints: response.data.hints,
       });
     });
   });
