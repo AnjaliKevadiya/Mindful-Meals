@@ -78,28 +78,7 @@ $(document).ready(function () {
         $.post("/api/addIntake", foodData).then(function (result) {
           console.log(result);
         });
-    
       })
     });
   }
-
-  // var addBtn = $("#add");
-
-  // //When add button is clicked
-  // addBtn.on("click", function (event) {
-  //   var label = $(this).data("label").val().trim()
-  //   event.preventDefault();
-  //   var foodData = {
-  //     name_of_food: label,
-  //   };
-
-  //   if (!foodData.name_of_food) {
-  //     return;
-  //   }
-
-  //   $.post("/api/addIntake", foodData).then(function (result) {
-  //     console.log(result);
-  //   });
-
-  // })
 });
