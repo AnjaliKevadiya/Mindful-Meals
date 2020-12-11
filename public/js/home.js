@@ -34,7 +34,6 @@ $(document).ready(function () {
       }else{
 
       $(".foodContainer").append(`
-
       <div class="card text-center">
       <div class="card-header">
         ${data.text}
@@ -66,6 +65,7 @@ $(document).ready(function () {
 
     $.post("/api/addIntake", foodData).then(function (result) {
       console.log(result);
+      $(".foodList").append(`<h3>${name}</h3>`)
     });
 
   })
