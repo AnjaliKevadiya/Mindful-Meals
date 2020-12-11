@@ -28,12 +28,13 @@ $(document).ready(function () {
     $.get(`/api/search?name=${name}`).then(function (data) {
       console.log(data);
       $(".foodContainer").empty()
+      $(".foodContainer2").empty()
 
-      if(!data.parsed[0]){
+      if (!data.parsed[0]) {
         $(".foodContainer2").append(`<h3>Nutrition facts for ${name} are not found</h3><br><h3>Please try again</h3>`)
-      }else{
+      } else {
 
-      $(".foodContainer").append(`
+        $(".foodContainer").append(`
       <div class="card text-center">
       <div class="card-header">
         ${data.text}
@@ -43,7 +44,8 @@ $(document).ready(function () {
         <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
         <a href="#" class="btn btn-primary" id="add" >Add</a>
       </div>
-            `)}
+            `)
+      }
       // If there's an error, handle it by throwing up a bootstrap alert
       //When rendering search data, create a add button with a data-label attribute
     });
@@ -53,6 +55,7 @@ $(document).ready(function () {
 
   //When add button is clicked
   addBtn.on("click", function (event) {
+    console.log("button clicked!")
     var label = $(this).data("label").val().trim();
     event.preventDefault();
     var foodData = {
@@ -64,8 +67,17 @@ $(document).ready(function () {
     }
 
     $.post("/api/addIntake", foodData).then(function (result) {
-      console.log(result);
-      $(".foodList").append(`<h3>${name}</h3>`)
+      console.log("the post:" + result);
     });
   });
+  $.get("/api/getIntake").then(function (data) {
+    console.log(data)
+    if(data.length > 0){
+      $(".foodList").append(`<h3>apple</h3>`)
+      console.log("button clicked!!!")
+    }
+  
+    
+  });
+
 });
