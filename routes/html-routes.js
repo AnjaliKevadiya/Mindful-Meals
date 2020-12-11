@@ -35,4 +35,9 @@ module.exports = function (app) {
   app.get("/contact", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/contact.html"));
   });
+
+  // route to redirect to about page
+  app.get("/about", isAuthenticated, function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/about.html"));
+  });
 };
