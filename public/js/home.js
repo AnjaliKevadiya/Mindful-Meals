@@ -36,38 +36,49 @@ $(document).ready(function () {
       } else {
         $(".foodContainer").append(`
 
-      <div class="card text-center">
-      <div class="card-header">
-        ${data.text}
-      </div>
-      <div class="card-body bg-success">
-        <h5 class="card-title">Nutrients:</h5>
-        <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
-        <a href="#" class="btn btn-primary" id="add" >Add</a>
-      </div>
-            `);
+          <div class="card text-center">
+          <div class="card-header">
+            ${data.text}
+          </div>
+          <div class="card-body bg-success">
+            <h5 class="card-title">Nutrients:</h5>
+            <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
+            <a href="#" class="btn btn-primary" id="add" >Add</a>
+          </div>
+        `);
+
+        addFoodToList(data);
       }
-      // If there's an error, handle it by throwing up a bootstrap alert
-      //When rendering search data, create a add button with a data-label attribute
     });
   }
 
-  var addBtn = $("#add");
+  function addFoodToList(data) {
+    var addBtn = $("#add");
 
-  //When add button is clicked
-  addBtn.on("click", function (event) {
-    var label = $(this).data("label").val().trim();
-    event.preventDefault();
-    var foodData = {
-      name_of_food: label,
-    };
+    //When add button is clicked
+    addBtn.on("click", function (event) {
+      var nameVal = data.text;
+      var proteinVal = data.parsed[0].food.nutrients.PROCNT;
+      var carbsVal = data.parsed[0].food.nutrients.CHOCDF;
+      var fatsVal = data.parsed[0].food.nutrients.FAT;
+      var fiberVal = data.parsed[0].food.nutrients.FIBTG;
+      var caloriesVal = data.parsed[0].food.nutrients.ENERC_KCAL;
 
-    if (!foodData.name_of_food) {
-      return;
-    }
+      event.preventDefault();
+      var foodData = {
+        name_of_food: nameVal,
+        protein: proteinVal,
+        carbs: carbsVal,
+        fats: fatsVal,
+        fiber: fiberVal,
+        calories: caloriesVal,
+      };
 
-    $.post("/api/addIntake", foodData).then(function (result) {
-      console.log(result);
+      console.log(foodData);
+
+      $.post("/api/addIntake", foodData).then(function (result) {
+        console.log(result);
+      });
     });
-  });
+  }
 });
