@@ -33,12 +33,12 @@ module.exports = function (app) {
   });
 
   // route to redirect to contact page
-  app.get("/contact", isAuthenticated, function (req, res) {
+  app.get("/contact", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/contact.html"));
   });
 
   // route to redirect to about page
-  app.get("/about", isAuthenticated, function (req, res) {
+  app.get("/about", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/about.html"));
   });
 };
