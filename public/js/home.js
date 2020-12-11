@@ -81,4 +81,10 @@ $(document).ready(function () {
       });
     });
   }
+
+  function getDailyIntake() {
+    // $.get("/api/getIntake", foodData).then(function (result) {
+    //   console.log(result);
+    // });
+  }
 });
