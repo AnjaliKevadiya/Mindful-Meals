@@ -8,11 +8,11 @@ module.exports = function(app) {
             UserId: req.user.id
         }).then( function (foodres) {
             db.Nutrients.create({
-                protein: req.body.nutrients.PROCNT,
-                carbs: req.body.nutrients.CHOCDF,
-                fats: req.body.nutrients.FAT,
-                fiber: req.body.nutrients.FIBTG,
-                calories: req.body.nutrients.ENERC_KCAL,
+                protein: req.body.protein,
+                carbs: req.body.carbs,
+                fats: req.body.fats,
+                fiber: req.body.fiber,
+                calories: req.body.calories,
                 DailyIntakeId: foodres.id
             }).then( function (foodres) {
             res.json(foodres)
@@ -40,5 +40,4 @@ module.exports = function(app) {
             res.json(dbDailyIntake);
         });
     });   
-
 }

@@ -47,26 +47,59 @@ $(document).ready(function () {
             `)}
       // If there's an error, handle it by throwing up a bootstrap alert
       //When rendering search data, create a add button with a data-label attribute
+
+      var addBtn = $("#add");
+
+      //When add button is clicked
+      addBtn.on("click", function (event) {
+        var nameVal = data.text;
+        var proteinVal = data.parsed[0].food.nutrients.PROCNT;
+        var carbsVal = data.parsed[0].food.nutrients.CHOCDF;
+        var fatsVal = data.parsed[0].food.nutrients.FAT;
+        var fiberVal = data.parsed[0].food.nutrients.FIBTG;
+        var caloriesVal = data.parsed[0].food.nutrients.ENERC_KCAL
+
+        event.preventDefault();
+        var foodData = {
+          name_of_food: nameVal,
+          protein: proteinVal,
+          carbs: carbsVal,
+          fats: fatsVal,
+          fiber: fiberVal,
+          calories: caloriesVal
+        };
+
+        console.log(foodData);
+    
+        if (!foodData.name_of_food) {
+          return;
+        }
+    
+        $.post("/api/addIntake", foodData).then(function (result) {
+          console.log(result);
+        });
+    
+      })
     });
   }
 
-  var addBtn = $("#add");
+  // var addBtn = $("#add");
 
-  //When add button is clicked
-  addBtn.on("click", function (event) {
-    var label = $(this).data("label").val().trim()
-    event.preventDefault();
-    var foodData = {
-      name_of_food: label,
-    };
+  // //When add button is clicked
+  // addBtn.on("click", function (event) {
+  //   var label = $(this).data("label").val().trim()
+  //   event.preventDefault();
+  //   var foodData = {
+  //     name_of_food: label,
+  //   };
 
-    if (!foodData.name_of_food) {
-      return;
-    }
+  //   if (!foodData.name_of_food) {
+  //     return;
+  //   }
 
-    $.post("/api/addIntake", foodData).then(function (result) {
-      console.log(result);
-    });
+  //   $.post("/api/addIntake", foodData).then(function (result) {
+  //     console.log(result);
+  //   });
 
-  })
+  // })
 });
