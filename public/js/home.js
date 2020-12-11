@@ -6,6 +6,9 @@ $(document).ready(function () {
     $(".member-name").text(data.email);
   });
 
+  // call function to get all food items of logged in user
+  getDailyIntake();
+
   var searchBtn = $("#search");
   var searchInput = $("#input-search");
 
@@ -79,13 +82,17 @@ $(document).ready(function () {
 
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
+        getDailyIntake();
       });
     });
   }
 
   function getDailyIntake() {
-    // $.get("/api/getIntake", foodData).then(function (result) {
-    //   console.log(result);
-    // });
+    const id = Cookies.get("id");
+    $.get(`/api/getIntake/${id}`).then(function (result) {
+      console.log("all food item of logged in user ", result);
+
+      //display result data
+    });
   }
 });
