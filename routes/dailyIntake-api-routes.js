@@ -30,6 +30,7 @@ module.exports = function (app) {
       res.json(dbDailyIntake);
     });
   });
+
   app.delete("/api/deleteIntake/:id", function (req, res) {
     // logic for deleting dailyIntake(food) item
     db.DailyIntake.destroy({
