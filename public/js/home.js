@@ -46,6 +46,27 @@ $(document).ready(function () {
       </div>
             `)}
       // If there's an error, handle it by throwing up a bootstrap alert
+      //When rendering search data, create a add button with a data-label attribute
     });
   }
+
+  var addBtn = $("#add");
+
+  //When add button is clicked
+  addBtn.on("click", function (event) {
+    var label = $(this).data("label").val().trim()
+    event.preventDefault();
+    var foodData = {
+      name_of_food: label,
+    };
+
+    if (!foodData.name_of_food) {
+      return;
+    }
+
+    $.post("/api/addIntake", foodData).then(function (result) {
+      console.log(result);
+    });
+
+  })
 });
