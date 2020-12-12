@@ -20,13 +20,14 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/getIntake", function (req, res) {
+  app.get("/api/getIntake/:user_id", function (req, res) {
     //logic for querying data to get all dailyIntake
-    var query = {};
-    if (req.query.user_id) {
-      query.User = req.query.user_id;
-    }
-    db.DailyIntake.findAll({}).then(function (dbDailyIntake) {
+    db.DailyIntake.findAll({
+      where: {
+        UserId: req.params.user_id,
+      },
+      include: db.Nutrients,
+    }).then(function (dbDailyIntake) {
       res.json(dbDailyIntake);
     });
   });
