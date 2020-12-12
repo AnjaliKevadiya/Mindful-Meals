@@ -2,8 +2,12 @@ $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
+    Cookies.set("id", data.id);
     $(".member-name").text(data.email);
   });
+
+  // call function to get all food items of logged in user
+  getDailyIntake();
 
   var searchBtn = $("#search");
   var searchInput = $("#input-search");
@@ -78,16 +82,17 @@ $(document).ready(function () {
 
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
+        getDailyIntake();
       });
     });
   }
 
-  $.get("/api/getIntake").then(function (data) {
-    console.log(data)
-    if(data.length > 0){
-      $(".foodList").append(`<h3>apple</h3>`)
-      console.log("button clicked!!!")
-    }
-  });
+  function getDailyIntake() {
+    const id = Cookies.get("id");
+    $.get(`/api/getIntake/${id}`).then(function (result) {
+      console.log("all food item of logged in user ", result);
 
+      //display result data
+    });
+  }
 });
