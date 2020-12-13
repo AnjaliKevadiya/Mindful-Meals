@@ -30,7 +30,10 @@ module.exports = function (app) {
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
+    //req for logout
     req.logout();
+
+    // after logout redirect user to signup page
     res.redirect("/");
   });
 
@@ -52,5 +55,25 @@ module.exports = function (app) {
 
   app.put("/api/user_info", function (req, res) {
 
+   });
+
+  app.post("/api/contact", function (req, res) {
+    var contactObj = {
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    };
+
+    if (req.body.phonenumber.length > 0) {
+      contactObj.phonenumber = req.body.phonenumber;
+    }
+
+    db.Contact.create(contactObj)
+      .then(function () {
+        res.json(contactObj);
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
   });
 };

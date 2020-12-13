@@ -1,17 +1,6 @@
 $(document).ready(function () {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function (data) {
-    $(".member-name").text(data.email);
-    // var progressValue = Math.round(data.progress);
-    // switch (progressValue) {
-    //   case progressValue < 25: 
-    //   case progressValue < 50 && progressValue >= 25: 
-    //   case progressValue < 75 && progressValue >= 50:
-    //   case progressValue <= 100 && progressValue >= 75:
-    //   default:  
-    }
-  });
+  // call function to get all food items of logged in user
+  getDailyIntake();
 
   var searchBtn = $("#search");
   var searchInput = $("#input-search");
@@ -35,58 +24,88 @@ $(document).ready(function () {
   function searchForFoodNuterients(name) {
     $.get(`/api/search?name=${name}`).then(function (data) {
       console.log(data);
-      $(".foodContainer").empty()
+      $(".foodContainer").empty();
+      $(".foodContainer2").empty();
 
-      if(!data.parsed[0]){
-        $(".foodContainer2").append(`<h3>Nutrition facts for ${name} are not found</h3><br><h3>Please try again</h3>`)
-      }else{
+      if (!data.parsed[0]) {
+        $(".foodContainer2").append(
+          `<h3>Nutrition facts for ${name} are not found</h3><br><h3>Please try again</h3>`
+        );
+      } else {
+        $(".foodContainer").append(`
 
-      $(".foodContainer").append(`
+          <div class="card text-center">
+          <div class="card-header">
+            ${data.text}
+          </div>
+          <div class="card-body bg-success">
+            <h5 class="card-title">Nutrients:</h5>
+            <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
+            <a href="#" class="btn btn-primary" id="add" >Add</a>
+          </div>
+        `);
 
-      <div class="card text-center">
-      <div class="card-header">
-        ${data.text}
-      </div>
-      <div class="card-body bg-success">
-        <h5 class="card-title">Nutrients:</h5>
-        <p class="card-text"><b>Calories:</b>${data.parsed[0].food.nutrients.ENERC_KCAL}cal <br> <b>Carbs</b>:${data.parsed[0].food.nutrients.CHOCDF}g <br><b>Fat:</b>${data.parsed[0].food.nutrients.FAT}g<br> <b>Fiber:</b>${data.parsed[0].food.nutrients.FIBTG}g <br> <b>Protein:</b>${data.parsed[0].food.nutrients.PROCNT}g</p>
-        <a href="#" class="btn btn-primary" id="add" >Add</a>
-      </div>
-            `)}
-      // If there's an error, handle it by throwing up a bootstrap alert
-      //When rendering search data, create a add button with a data-label attribute
+        addFoodToList(data);
+      }
+    });
+  }
 
-      var addBtn = $("#add");
+  function addFoodToList(data) {
+    var addBtn = $("#add");
 
-      //When add button is clicked
-      addBtn.on("click", function (event) {
-        var nameVal = data.text;
-        var proteinVal = data.parsed[0].food.nutrients.PROCNT;
-        var carbsVal = data.parsed[0].food.nutrients.CHOCDF;
-        var fatsVal = data.parsed[0].food.nutrients.FAT;
-        var fiberVal = data.parsed[0].food.nutrients.FIBTG;
-        var caloriesVal = data.parsed[0].food.nutrients.ENERC_KCAL
+    //When add button is clicked
+    addBtn.on("click", function (event) {
+      var nameVal = data.text;
+      var proteinVal = data.parsed[0].food.nutrients.PROCNT;
+      var carbsVal = data.parsed[0].food.nutrients.CHOCDF;
+      var fatsVal = data.parsed[0].food.nutrients.FAT;
+      var fiberVal = data.parsed[0].food.nutrients.FIBTG;
+      var caloriesVal = data.parsed[0].food.nutrients.ENERC_KCAL;
 
-        event.preventDefault();
-        var foodData = {
-          name_of_food: nameVal,
-          protein: proteinVal,
-          carbs: carbsVal,
-          fats: fatsVal,
-          fiber: fiberVal,
-          calories: caloriesVal
-        };
+      event.preventDefault();
+      var foodData = {
+        name_of_food: nameVal,
+        protein: proteinVal,
+        carbs: carbsVal,
+        fats: fatsVal,
+        fiber: fiberVal,
+        calories: caloriesVal,
+      };
 
-        console.log(foodData);
-    
-        if (!foodData.name_of_food) {
-          return;
-        }
-    
-        $.post("/api/addIntake", foodData).then(function (result) {
-          console.log(result);
-        });
-      })
+      console.log(foodData);
+
+      $.post("/api/addIntake", foodData).then(function (result) {
+        console.log(result);
+        getDailyIntake();
+        $(".foodList").append(`
+        <div class="card text-center">
+        <div class="card-header">
+          Today's food
+          </div>
+        <div class="card-body bg-success">
+          <p class="card-text">${nameVal}</p>
+        </div>
+      `),
+      $(".todaysNutrients").append(`
+        <div class="card text-center">
+        <div class="card-header">
+          Today's total nurtiets
+          </div>
+        <div class="card-body bg-success">
+          <p class="card-text"><b>Calories:</b>${caloriesVal}cal <br> <b>Carbs</b>:${carbsVal}g <br><b>Fat:</b>${fatsVal}g<br> <b>Fiber:</b>${fiberVal}g <br> <b>Protein:</b>${proteinVal}g
+        </div>
+      `)
+      });
+    });
+  }
+
+  function getDailyIntake() {
+    const id = Cookies.get("id");
+    $.get(`/api/getIntake/${id}`).then(function (result) {
+      console.log("all food item of logged in user ", result);
+
+
+      //display result data
     });
   }
 });
