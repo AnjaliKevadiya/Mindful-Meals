@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $.get("/api/user_data").then(function (data) {
+    $(".member-name").text(data.email);
+  });
+
   // Getting references to our form and input
   var contactForm = $("form.contact");
   var inputName = $("input#inputName");
