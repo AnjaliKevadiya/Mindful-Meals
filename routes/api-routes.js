@@ -45,11 +45,12 @@ module.exports = function (app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
+        progress: req.user.progress
       });
     }
   });
 
-  // app.get("/api/user_info", function (req, res) {
+  app.put("/api/user_info", function (req, res) {
 
-  // })
+  });
 };

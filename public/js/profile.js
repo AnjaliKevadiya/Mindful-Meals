@@ -11,7 +11,7 @@ $(document).ready(function () {
     var height = $("#height");
     var weight = $("weight");
     var age = $("#age");
-    var calorieIntake = $("#calorie-intake");
+   // var calorieIntake = $("#calorie-intake");
     var activity = $("#activity");
     var goal = ("#goal");
 
