@@ -3,6 +3,14 @@ $(document).ready(function () {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
+    // var progressValue = Math.round(data.progress);
+    // switch (progressValue) {
+    //   case progressValue < 25: 
+    //   case progressValue < 50 && progressValue >= 25: 
+    //   case progressValue < 75 && progressValue >= 50:
+    //   case progressValue <= 100 && progressValue >= 75:
+    //   default:  
+    }
   });
 
   var searchBtn = $("#search");
