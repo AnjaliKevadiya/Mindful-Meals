@@ -25,6 +25,7 @@ $(document).ready(function () {
     $.get(`/api/search?name=${name}`).then(function (data) {
       console.log(data);
       $(".foodContainer").empty();
+      $(".foodContainer2").empty();
 
       if (!data.parsed[0]) {
         $(".foodContainer2").append(
@@ -76,6 +77,24 @@ $(document).ready(function () {
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
         getDailyIntake();
+        $(".foodList").append(`
+        <div class="card text-center">
+        <div class="card-header">
+          Today's food
+          </div>
+        <div class="card-body bg-success">
+          <p class="card-text">${nameVal}</p>
+        </div>
+      `),
+      $(".todaysNutrients").append(`
+        <div class="card text-center">
+        <div class="card-header">
+          Today's total nurtiets
+          </div>
+        <div class="card-body bg-success">
+          <p class="card-text"><b>Calories:</b>${caloriesVal}cal <br> <b>Carbs</b>:${carbsVal}g <br><b>Fat:</b>${fatsVal}g<br> <b>Fiber:</b>${fiberVal}g <br> <b>Protein:</b>${proteinVal}g
+        </div>
+      `)
       });
     });
   }
@@ -84,6 +103,7 @@ $(document).ready(function () {
     const id = Cookies.get("id");
     $.get(`/api/getIntake/${id}`).then(function (result) {
       console.log("all food item of logged in user ", result);
+
 
       //display result data
     });
