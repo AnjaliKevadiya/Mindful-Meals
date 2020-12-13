@@ -30,9 +30,6 @@ module.exports = function (app) {
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
-    // remove cookie
-    Cookies.remove("id");
-
     //req for logout
     req.logout();
 
