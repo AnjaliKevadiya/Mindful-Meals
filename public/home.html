@@ -6,55 +6,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css">
+
     <!-- font-awesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 
     <!-- linked to style.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <title>Home</title>
+    <!-- <link rel="stylesheet" href="stylesheets/style.css"> -->
+    <title>Mindful Meals</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <a class="navbar-brand" href="/home">Project 2</a>
-        <i class="fas fa-utensils fa-2x"></i>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a class="dropdown-item" href="/home">Home</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="/about">About</a>
-                </li>
-                <li><a class="dropdown-item" href="/contact">Contact</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menu
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/profile">Profile</a>
-                        <a class="dropdown-item" href="/logout">Log out</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <h2>Welcome! <span class="member-name"></span></h2>
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container col-md-11">
+                <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong></h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle member-name" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hello,
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item logout" href="/logout">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>         
+                </div>
             </div>
-        </div>
+        </nav>
+    </header>
+    <!-- header -->
+      
+    <div class="container">
 
         <div class="row">
             <div class="col-md-4"></div>
@@ -89,8 +92,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
-    <!-- link to home.js-->
+    <!-- link to all .js files -->
     <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
 
 </body>
 
