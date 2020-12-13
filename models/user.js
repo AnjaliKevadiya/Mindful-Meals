@@ -44,6 +44,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    progress: {
+      type: DataTypes.DECIMAL,
+      default: 0
+    }
   });
 
   User.associate = function (models) {
