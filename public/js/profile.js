@@ -21,7 +21,8 @@ $(document).ready(function () {
             first_name: firstName.val().trim(),
             last_name: lastName.val().trim(),
             age: age.val(),
-            height: height.val(),
+            feet: feet.val(),
+            inches: inches.val(),
             weight: weight.val(),
             no_of_active_days: activity.val(),
             lose_or_gain_weight: goal.val()
@@ -31,11 +32,11 @@ $(document).ready(function () {
     updateProfile(updateData);
     
     // Update user profile
-    function updateProfile(first_name, last_name, age, height, weight, no_of_active_days, lose_or_gain_weight) {
+    function updateProfile(updateData) {
     $.ajax({
         method: "PUT",
         url: "/api/user_data",
-        data: User
+        data: updateData
     }).then(function() {
         window.location.href = "/home";
     });
