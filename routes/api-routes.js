@@ -48,22 +48,20 @@ module.exports = function (app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        progress: req.user.progress
+        progress: req.user.progress,
       });
     }
   });
 
-  app.put("/api/user_data", function(req, res) {
-    db.User.update(
-        req.body,
-        {
-            where: {
-              id: req.user.id
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        });
+  app.put("/api/user_data", function (req, res) {
+    db.User.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
+  });
 
   app.post("/api/contact", function (req, res) {
     var contactObj = {

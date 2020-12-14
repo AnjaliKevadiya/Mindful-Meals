@@ -86,7 +86,7 @@ $(document).ready(function () {
           <p class="card-text">${nameVal}</p>
         </div>
       `),
-      $(".todaysNutrients").append(`
+          $(".todaysNutrients").append(`
         <div class="card text-center">
         <div class="card-header">
           Today's total nurtiets
@@ -94,7 +94,7 @@ $(document).ready(function () {
         <div class="card-body bg-success">
           <p class="card-text"><b>Calories:</b>${caloriesVal}cal <br> <b>Carbs</b>:${carbsVal}g <br><b>Fat:</b>${fatsVal}g<br> <b>Fiber:</b>${fiberVal}g <br> <b>Protein:</b>${proteinVal}g
         </div>
-      `)
+      `);
       });
     });
   }
@@ -104,7 +104,7 @@ $(document).ready(function () {
     $.get(`/api/getIntake/${id}`).then(function (result) {
       console.log("all food item of logged in user ", result);
 
-
+      getDailyIntake();
       //display result data
     });
   }
