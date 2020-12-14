@@ -14,6 +14,24 @@
 
   <!-- linked to style.css -->
   <link rel="stylesheet" href="stylesheets/style.css">
+
+  <!-- script for validate form -->
+  <script type="text/javascript">  
+    (function () {  
+        'use strict';  
+        window.addEventListener('load', function () {  
+            var form = document.getElementById('needs-validation');  
+            form.addEventListener('submit', function (event) {  
+                if (form.checkValidity() === false) {  
+                    event.preventDefault();  
+                    event.stopPropagation();  
+                }  
+                form.classList.add('was-validated');  
+            }, false);  
+        }, false);  
+    })();  
+  </script>  
+
   <title>Mindful Meals</title>
 </head>
 
@@ -49,19 +67,25 @@
     <!-- <div class="row">
       <div class="col-md-6 col-md-offset-3"> -->
         <h2 class="text-center">Login</h2>
-        <form class="login">
+        <form class="login" id="needs-validation" novalidate>
           <div class="form-group">
             <label for="email-input">Email</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            <input type="email" class="form-control" id="email-input" placeholder="Email" required />
+            <div class="invalid-feedback">  
+              Please provide a valid email.  
+            </div>    
           </div>
           <div class="form-group">
             <label for="password-input">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
+            <input type="password" class="form-control" id="password-input" placeholder="Password" required />
+            <div class="invalid-feedback">  
+              Please enter a correct password.  
+            </div>    
           </div>
           <button type="submit" class="btn btn-outline-success">Login</button>
         </form>
         <br/>
-        <p>Or sign up <a href="signup.html">here</a></p>
+        <p class="text-center">Or sign up <a href="signup.html">here</a></p>
       <!-- </div>
     </div> -->
   </div>
