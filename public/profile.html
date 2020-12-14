@@ -14,7 +14,7 @@
 
     <!-- linked to style.css -->
     <link rel="stylesheet" href="stylesheets/style.css">
-    
+
     <title>Mindful Meals</title>
 </head>
 
@@ -23,11 +23,13 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container col-md-11">
-                <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong></h1>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong>
+                </h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            
+
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -35,7 +37,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About</a>
-                        </li>    
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
@@ -46,11 +48,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="/logout">Log out</a></li>
                             </ul>
                         </li>
-                    </ul>         
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -60,28 +64,28 @@
     <div class="container wrapper">
         <h1 style="text-align:center">Profile</h1>
         <form>
-          <div class="form-row">
-            <div class="col-md-3"></div>
-            <div class="form-group col-md-3">
-                <label for="firstName">First Name</label>
-                <input type="firstName" class="form-control" id="firstName" placeholder="First Name">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="lastName">Last Name</label>
-                <input type="lastName" class="form-control" id="lastName" placeholder="Last Name">
-            </div>
-        </div>
             <div class="form-row">
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
+                    <label for="firstName">First Name</label>
+                    <input type="firstName" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="lastName">Last Name</label>
+                    <input type="lastName" class="form-control" id="lastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-2">
                     <label for="feet">Height</label>
                     <input type="Height" class="form-control" id="feet" placeholder="ft">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="inches">Height</label>
+                <div class="form-group col-md-2">
+                    <label for="inches"><br></label>
                     <input type="Height" class="form-control" id="inches" placeholder="in">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="weight">Weight</label>
                     <input type="Weight" class="form-control" id="weight" placeholder="Weight">
                 </div>
@@ -92,9 +96,13 @@
                     <label for="age">Age</label>
                     <input type="text" class="form-control" id="age" placeholder="Age">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="calorie-intake">Calorie intake/day</label>
-                    <input type="text" class="form-control" id="calorie-intake" placeholder="Calorie intake">
+                <div class="form-group col-md-3 pr-1">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -116,18 +124,13 @@
                         <option value="maintain">Maintain current weight</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3 pr-1">
-                    <label for="gender">Gender</label>
-                    <select id="gender" class="form-control">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-            </div>
-            <div class="row">
-                <div class="col-md-7"></div>
-                <a href="/home">
-                    <button type="submit" class="btn btn-outline-success">Update Profile</button>
-                </a>
+                <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-7"></div>
+                    <a href="/home">
+                        <button type="submit" class="btn btn-outline-success">Update Profile</button>
+                    </a>
+                </div>
             </div>
         </form>
     </div>
@@ -139,7 +142,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
     <!-- link to all .js files -->
     <script type="text/javascript" src="js/profile.js"></script>
