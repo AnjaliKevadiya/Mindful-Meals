@@ -73,46 +73,35 @@
     </header>
     <!-- header -->
 
-    <div class="container">
+    <div class="container col-md-4">
         <h1 style="text-align:center">Contact Us</h1>
         <form class="contact" id="needs-validation" novalidate>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputName">Name</label>
-                    <input type="Name" class="form-control" id="inputName" placeholder="Name" required />
-                    <div class="invalid-feedback">  
-                        Please enter your name.  
-                    </div>    
-                </div>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="Name" class="form-control" id="inputName" placeholder="Name" required />
+                <div class="invalid-feedback">  
+                    Please enter your name.  
+                </div>    
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">Email</label>
-                    <input type="Email" class="form-control" id="inputEmail" placeholder="Email" required />
-                    <div class="invalid-feedback">  
-                        Please provide a valid email.  
-                    </div>    
-                </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="Email" class="form-control" id="inputEmail" placeholder="Email" required />
+                <div class="invalid-feedback">  
+                    Please provide a valid email.  
+                </div>    
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputPhoneNumber">Phone Number</label>
-                    <input type="text" class="form-control" id="inputPhoneNumber" placeholder="(000)-000-0000">
-                </div>
+            <div class="form-group">
+                <label for="inputPhoneNumber">Phone Number</label>
+                <input type="text" class="form-control" id="inputPhoneNumber" placeholder="(000)-000-0000">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="textareaMessage" class="form-label">Message</label>
-                    <textarea class="form-control" id="textareaMessage" placeholder="Message" rows="3" required></textarea>
-                    <div class="invalid-feedback">  
-                        Please enter your message.  
-                    </div>    
-                </div>
+            <div class="form-group">
+                <label for="textareaMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="textareaMessage" placeholder="Message" rows="3" required></textarea>
+                <div class="invalid-feedback">  
+                    Please enter your message.  
+                </div>    
             </div>
-            <div class="form-row">
-                <!-- <div class="form-group col-md-6"></div> -->
-                <button type="submit" class="btn btn-outline-success" id="send">Send</button>
-            </div>    
+            <button type="submit" class="btn btn-outline-success" id="send">Send</button>
         </form>
     </div>
 
