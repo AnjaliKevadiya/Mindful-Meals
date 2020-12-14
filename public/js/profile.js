@@ -8,6 +8,7 @@ $(document).ready(function () {
     var updateBtn = $("#update");
     var firstName = $("#firstName");
     var lastName = $("#lastName");
+    var gender = $("#gender");
     var feet = $("#feet");
     var inches = $("#inches");
     var weight = $("#weight");
@@ -21,6 +22,7 @@ $(document).ready(function () {
         var updateData = {
             first_name: firstName.val().trim(),
             last_name: lastName.val().trim(),
+            gender: gender.val(),
             age: parseInt(age.val().trim()),
             feet: parseInt(feet.val()),
             inches: parseInt(inches.val()),
@@ -31,8 +33,28 @@ $(document).ready(function () {
 
         console.log(updateData);
 
-        var height = (feet * 12) + inches;
+        var height = (updateData.feet * 12) + updateData.inches;
 
+        var BMR;
+        var factor;
+
+        if ( gender.val() ==="male") {
+            BMR = 66 + (6.3 * updateData.weight) + (12.9 * height) - (6.8 * updateData.age)
+        } else {
+            BMR = 655 + (4.3 * updateData.weight) + (4.7 * height) - (4.7 * updateData.age)
+        };
+
+        if (updateData.no_of_active_days === "low") {
+            factor = 1.2
+        } else if (updateData.no_of_active_days === "moderate") {
+            factor =  1.375
+        } else if (updateData.no_of_active_days === "active") {
+            factor =  1.55
+        } else {
+            factor = 1.725
+        };
+
+        updateData.totalCalories = BMR * factor;
 
 
 

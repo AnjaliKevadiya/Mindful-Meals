@@ -11,6 +11,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     age: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -44,10 +48,13 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    totalCalories: {
+      type: DataTypes.DECIMAL,
+      defaultValue: 0
+    },
     progress: {
       type: DataTypes.DECIMAL,
-      default: 0
+      defaultValue: 0
     }
   });
 
