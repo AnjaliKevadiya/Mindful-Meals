@@ -54,3 +54,8 @@ footer {
   float: right;
   min-width: 100px;
 }
+
+.wrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
