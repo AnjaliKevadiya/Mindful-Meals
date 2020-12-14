@@ -58,13 +58,7 @@ module.exports = function (app) {
         req.body,
         {
             where: {
-                first_name: first_name,
-                last_name: last_name,
-                age: age,
-                height: height,
-                weight: weight,
-                no_of_active_days: no_of_active_days,
-                lose_or_gain_weight: lose_or_gain_weight
+              id: req.user.id
             }
         }).then(function(dbUser) {
             res.json(dbUser);

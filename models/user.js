@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
     },
     height: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     weight: {
@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
     },
     no_of_active_days: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     lose_or_gain_weight: {
