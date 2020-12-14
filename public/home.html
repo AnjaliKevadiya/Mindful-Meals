@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css">
 
@@ -22,11 +22,13 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container col-md-11">
-                <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong></h1>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong>
+                </h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            
+
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -34,7 +36,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About</a>
-                        </li>    
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
@@ -45,17 +47,19 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item logout" href="/logout">Log out</a></li>
                             </ul>
                         </li>
-                    </ul>         
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <!-- header -->
-      
+
     <div class="container wrapper">
 
         <div class="row">
@@ -67,39 +71,58 @@
             </form>
         </div>
         <p class="paragraph">Please search for a food item to add to todays meal plan</p>
+        <div class="row">
+            <div class="foodContainer col-md-6"></div>
+            <div class="foodList col-md-3 mr-auto">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Todays Food</th>
+                            <th scope="col">Calories</th>
+                            <th scope="col">Carbs</th>
+                            <th scope="col">Fat</th>
+                            <th scope="col">Fiber</th>
+                            <th scope="col">Protein</th>
+                        </tr>
+                    </thead>
+                    <tbody class="nutrientsList">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="todaysNutrients col-md-3">
+        </div>
     </div>
     <div class="foodContainer2"></div>
-    <div class="row">
-        <div class="foodContainer col-md-6"></div>
-        <div class="foodList col-md-3 mr-auto">          
-        </div>
-        <div class="todaysNutrients col-md-3">           
-        </div>
-    </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container text-center text-md-left">    
-      <hr />
-        <div class="row">
-          <div class="col-md-6 col-lg-7">
-          <!--Copyright-->
-          <p class="text-center text-md-left">© 2020 BY MINDFUL MEALS
-          </p>
-        </div>  
-  
-        <div class="col-md-6 col-lg-5">
-          <!-- Social buttons -->
-          <div class="text-center text-md-right" style="margin-bottom: 20px;">
-            <a href="https://github.com/AnjaliKevadiya/Mindful-Meals"><i class="fab fa-github fa-2x text-secondary mx-3"></i></a>
-            <a href="mailto:anjalikevadiya5@gmail.com"><i class="fab fa-google-plus fa-2x text-secondary mx-2"></i></a>
-          </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-md-left">
+            <hr />
+            <div class="row">
+                <div class="col-md-6 col-lg-7">
+                    <!--Copyright-->
+                    <p class="text-center text-md-left">© 2020 BY MINDFUL MEALS
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-5">
+                    <!-- Social buttons -->
+                    <div class="text-center text-md-right" style="margin-bottom: 20px;">
+                        <a href="https://github.com/AnjaliKevadiya/Mindful-Meals"><i
+                                class="fab fa-github fa-2x text-secondary mx-3"></i></a>
+                        <a href="mailto:anjalikevadiya5@gmail.com"><i
+                                class="fab fa-google-plus fa-2x text-secondary mx-2"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>  
-    </div>  
-  </footer>
-  <!-- Footer -->
-  
+    </footer>
+    <!-- Footer -->
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
