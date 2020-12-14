@@ -38,10 +38,12 @@ $(document).ready(function () {
         var BMR;
         var factor;
 
-        if ( gender.val() ==="male") {
+        if ( updateData.gender ==="male") {
             BMR = 66 + (6.3 * updateData.weight) + (12.9 * height) - (6.8 * updateData.age)
-        } else {
+        } else if ( updateData.gender ==="female") {
             BMR = 655 + (4.3 * updateData.weight) + (4.7 * height) - (4.7 * updateData.age)
+        } else {
+            BMR = 360 + (5.3 * updateData.weight) + (8.8 * height) - (5.8 * updateData.age)
         };
 
         if (updateData.no_of_active_days === "low") {
@@ -54,6 +56,7 @@ $(document).ready(function () {
             factor = 1.725
         };
 
+        updateData.height = height;
         updateData.totalCalories = BMR * factor;
 
 
