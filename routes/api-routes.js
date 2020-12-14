@@ -53,9 +53,23 @@ module.exports = function (app) {
     }
   });
 
-  app.put("/api/user_info", function (req, res) {
-
-   });
+  app.put("/api/user_data", function(req, res) {
+    db.User.update(
+        req.body,
+        {
+            where: {
+                first_name: first_name,
+                last_name: last_name,
+                age: age,
+                height: height,
+                weight: weight,
+                no_of_active_days: no_of_active_days,
+                lose_or_gain_weight: lose_or_gain_weight
+            }
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        });
+    });
 
   app.post("/api/contact", function (req, res) {
     var contactObj = {

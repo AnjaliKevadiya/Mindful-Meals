@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //use GET request to figure out which user is logged in
-    $.get("/api/user-data").then(function (data) {
+    $.get("/api/user_data").then(function (data) {
         $(".member-name").text(data.email);
     });
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
     var age = $("#age");
    // var calorieIntake = $("#calorie-intake");
     var activity = $("#activity");
-    var goal = ("#goal");
+    var goal = $("#goal");
 
     updateBtn.on("click", function (event) {
         event.preventDefault();
@@ -21,18 +21,10 @@ $(document).ready(function () {
             first_name: firstName.val().trim(),
             last_name: lastName.val().trim(),
             age: age.val(),
-            height: Integer.parseInt(height),
+            height: height.val(),
             weight: weight.val(),
             no_of_active_days: activity.val(),
             lose_or_gain_weight: goal.val()
         }
-
-        console.log(updateData);
-
-        $.post("/api/user_info", updateData).then(function (result) {
-            console.log(result);
-        });
     });
-
-
 });
