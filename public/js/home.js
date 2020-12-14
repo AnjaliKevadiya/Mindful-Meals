@@ -1,4 +1,4 @@
-const { Cookie } = require("express-session");
+// const { Cookie } = require("express-session");
 
 $(document).ready(function () {
   // call function to get all food items of logged in user
@@ -97,8 +97,10 @@ $(document).ready(function () {
     $.get(`/api/getIntake/${id}`).then(function (result) {
       console.log("all food item of logged in user ", result);
 
+      //clear the nutrientsList before adding new item
+      $(".nutrientsList").empty();
+
       result.forEach(food => {
-        cal += food.Nutrients[0].calories
         console.log("food", food);
         $(".nutrientsList").append(`
         <tr>
@@ -108,13 +110,29 @@ $(document).ready(function () {
           <td>${food.Nutrients[0].fats}</td>
           <td>${food.Nutrients[0].fiber}</td>
           <td>${food.Nutrients[0].protein}</td>
+          <td><button type="submit" class="btn btn-danger" id="delete-food">Delete</button></td>
         </tr>
       `)
       }
       );
-     
-
-      //display result data
     });
   }
+
+  $("#delete-food").on("click", function(event) {
+    //var id = $(this).data("id");
+    console.log("delete hit");
+  });
+
+  // function deleteFoodItem(data){
+  //   var deleteBtn = $("#delete");
+  //   deleteBtn.on("click", function(event){    
+  //     console.log("delete hit");
+  //     // const id = //grad the id
+  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
+  //     //   getDailyIntake();
+         
+  //     // });
+  //   })
+  // }
+  
 });
