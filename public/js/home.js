@@ -1,3 +1,5 @@
+const { Cookie } = require("express-session");
+
 $(document).ready(function () {
   // call function to get all food items of logged in user
   getDailyIntake();
@@ -77,24 +79,6 @@ $(document).ready(function () {
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
         getDailyIntake();
-        $(".foodList").append(`
-        <div class="card text-center">
-        <div class="card-header">
-          Today's food
-          </div>
-        <div class="card-body bg-success">
-          <p class="card-text">${nameVal}</p>
-        </div>
-      `),
-          $(".todaysNutrients").append(`
-        <div class="card text-center">
-        <div class="card-header">
-          Today's total nurtiets
-          </div>
-        <div class="card-body bg-success">
-          <p class="card-text"><b>Calories:</b>${caloriesVal}cal <br> <b>Carbs</b>:${carbsVal}g <br><b>Fat:</b>${fatsVal}g<br> <b>Fiber:</b>${fiberVal}g <br> <b>Protein:</b>${proteinVal}g
-        </div>
-      `);
       });
     });
   }
@@ -102,10 +86,22 @@ $(document).ready(function () {
   function getDailyIntake() {
     const id = Cookies.get("id");
     $.get(`/api/getIntake/${id}`).then(function (result) {
-      console.log("all food item of logged in user ", result);
+      // console.log("all food item of logged in user ", result);
 
-      getDailyIntake();
-      //display result data
+      result.forEach((food) => {
+        cal += food.Nutrients[0].calories;
+        console.log("food", food);
+        $(".nutrientsList").append(`
+        <tr>
+          <th scope="row">${food.name_of_food}</th>
+          <td>${food.Nutrients[0].calories}</td>
+          <td>${food.Nutrients[0].carbs}</td>
+          <td>${food.Nutrients[0].fats}</td>
+          <td>${food.Nutrients[0].fiber}</td>
+          <td>${food.Nutrients[0].protein}</td>
+        </tr>
+      `);
+      });
     });
   }
 });
