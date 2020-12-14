@@ -26,5 +26,20 @@ $(document).ready(function () {
             no_of_active_days: activity.val(),
             lose_or_gain_weight: goal.val()
         }
+
+
+    updateProfile(updateData);
+    
+    // Update user profile
+    function updateProfile(first_name, last_name, age, height, weight, no_of_active_days, lose_or_gain_weight) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/user_data",
+        data: User
+    }).then(function() {
+        window.location.href = "/home";
     });
+}
+});
+
 });
