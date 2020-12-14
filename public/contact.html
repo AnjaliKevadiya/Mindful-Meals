@@ -7,21 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css">
 
     <!-- font-awesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 
     <!-- linked to style.css -->
-    <!-- <link rel="stylesheet" href="stylesheets/style.css"> -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+    <!-- script for validate form -->
+    <script type="text/javascript">  
+        (function () {  
+            'use strict';  
+            window.addEventListener('load', function () {  
+                var form = document.getElementById('needs-validation');  
+                form.addEventListener('submit', function (event) {  
+                    if (form.checkValidity() === false) {  
+                        event.preventDefault();  
+                        event.stopPropagation();  
+                    }  
+                    form.classList.add('was-validated');  
+                }, false);  
+            }, false);  
+        })();  
+    </script>  
+  
     <title>Mindful Meals</title>
 </head>
 <body>
     <!-- header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container col-md-11">
                 <h1><strong><a class="navbar-brand" style="letter-spacing:5px;" href="/home">Mindful Meals</a></strong></h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,43 +73,60 @@
     </header>
     <!-- header -->
 
-    <div class="container pt-5 pl-5 pr-5 pb-5 bor">
-        <h1 style="text-align:center">Contact</h1>
-        <form class="contact">
-            <div class="form-row">
-                <div class="form-group col-md-5"></div>
-                <div class="form-group col-md-3 nameInput">
-                    <label for="inputName">Name</label>
-                    <input type="Name" class="form-control" id="inputName" placeholder="Name">
-                </div>
+    <div class="container col-md-4 wrapper">
+        <h1 style="text-align:center">Contact Us</h1>
+        <form class="contact" id="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="Name" class="form-control" id="inputName" placeholder="Name" required />
+                <div class="invalid-feedback">  
+                    Please enter your name.  
+                </div>    
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-5"></div>
-                <div class="form-group col-md-3">
-                    <label for="inputEmail">Email</label>
-                    <input type="Email" class="form-control" id="inputEmail" placeholder="Email">
-                </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="Email" class="form-control" id="inputEmail" placeholder="Email" required />
+                <div class="invalid-feedback">  
+                    Please provide a valid email.  
+                </div>    
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-5"></div>
-                <div class="form-group col-md-3">
-                    <label for="inputPhoneNumber">Phone Number</label>
-                    <input type="text" class="form-control" id="inputPhoneNumber" placeholder="(000)-000-0000">
-                </div>
+            <div class="form-group">
+                <label for="inputPhoneNumber">Phone Number</label>
+                <input type="text" class="form-control" id="inputPhoneNumber" placeholder="(000)-000-0000">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-5"></div>
-                <div class="form-group col-md-3">
-                    <label for="textareaMessage" class="form-label">Message</label>
-                    <textarea class="form-control" id="textareaMessage" placeholder="Message" rows="4"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="textareaMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="textareaMessage" placeholder="Message" rows="3" required></textarea>
+                <div class="invalid-feedback">  
+                    Please enter your message.  
+                </div>    
             </div>
-            <div class="row">
-                <div class="form-group col-md-6"></div>
-                <button type="submit" class="btn btn-outline-success mx-5 mr-5" id="send">Send</button>
-            </div>    
+            <button type="submit" class="btn btn-outline-success" id="send">Send</button>
         </form>
     </div>
+
+      <!-- Footer -->
+  <footer>
+    <div class="container text-center text-md-left">    
+      <hr />
+        <div class="row">
+          <div class="col-md-6 col-lg-7">
+          <!--Copyright-->
+          <p class="text-center text-md-left">© 2020 BY MINDFUL MEALS
+          </p>
+        </div>  
+  
+        <div class="col-md-6 col-lg-5">
+          <!-- Social buttons -->
+          <div class="text-center text-md-right" style="margin-bottom: 20px;">
+            <a href="https://github.com/AnjaliKevadiya/Mindful-Meals"><i class="fab fa-github fa-2x text-secondary mx-3"></i></a>
+            <a href="mailto:anjalikevadiya5@gmail.com"><i class="fab fa-google-plus fa-2x text-secondary mx-2"></i></a>
+          </div>
+        </div>
+      </div>  
+    </div>  
+  </footer>
+  <!-- Footer -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -103,6 +136,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        
     <!-- link to all .js files -->
     <script type="text/javascript" src="js/contact.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
