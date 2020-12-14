@@ -49,3 +49,8 @@ footer {
 .dropdown-item {
   font-size: 13px !important;
 }
+
+.btn-outline-success {
+  float: right;
+  min-width: 100px;
+}
