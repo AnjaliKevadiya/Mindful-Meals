@@ -1,5 +1,3 @@
-const { Cookie } = require("express-session");
-
 $(document).ready(function () {
   // call function to get all food items of logged in user
   getDailyIntake();
@@ -88,9 +86,12 @@ $(document).ready(function () {
     $.get(`/api/getIntake/${id}`).then(function (result) {
       // console.log("all food item of logged in user ", result);
 
+      //clear the nutrientsList before adding new item
+      $(".nutrientsList").empty();
+
       result.forEach((food) => {
-        cal += food.Nutrients[0].calories;
         console.log("food", food);
+
         $(".nutrientsList").append(`
         <tr>
           <th scope="row">${food.name_of_food}</th>
