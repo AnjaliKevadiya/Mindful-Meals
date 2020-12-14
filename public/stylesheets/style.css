@@ -34,7 +34,7 @@ a {
 } */
 
 header {
-  background-color: #eee5e2;
+  background-color: #e8eec5;
 }
 
 footer {
@@ -42,5 +42,10 @@ footer {
   /* position: sticky; */
   bottom: 0px;
   width: 100%;
-  background-color: #eee5e2;
+  background-color: #e8eec5;
+}
+
+.nav-link,
+.dropdown-item {
+  font-size: 13px !important;
 }
