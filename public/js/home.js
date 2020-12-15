@@ -13,7 +13,7 @@ $(document).ready(function () {
     }
   };
 
-  $.get("/api/user_data").then(function (data) {
+  $.get("/api/progress").then(function (data) {
     console.log(data);
     progress = data.progress;
     totalCalories = data.totalCalories;
@@ -131,7 +131,13 @@ $(document).ready(function () {
         console.log("food", food);
         console.log(caloriesConsumed);
 
+        if (parseFloat(totalCalories) === 0) {
+          progress = 0;
+        }
+        else {
         progress = (caloriesConsumed/parseFloat(totalCalories)) * 100;
+        }
+        
         console.log(progress);
 
           $.ajax({
