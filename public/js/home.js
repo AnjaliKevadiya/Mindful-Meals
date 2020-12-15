@@ -110,18 +110,15 @@ $(document).ready(function () {
           <td>${food.Nutrients[0].fats}</td>
           <td>${food.Nutrients[0].fiber}</td>
           <td>${food.Nutrients[0].protein}</td>
-          <td><button type="submit" class="btn btn-danger" id="delete-food">Delete</button></td>
         </tr>
       `)
       }
       );
     });
+   
   }
 
-  $("#delete-food").on("click", function(event) {
-    //var id = $(this).data("id");
-    console.log("delete hit");
-  });
+
 
   // function deleteFoodItem(data){
   //   var deleteBtn = $("#delete");
