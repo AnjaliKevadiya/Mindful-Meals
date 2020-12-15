@@ -1,5 +1,3 @@
-// const { Cookie } = require("express-session");
-
 $(document).ready(function () {
   var progress, totalCalories;
   //use GET request to figure out which user is logged in
@@ -120,7 +118,7 @@ $(document).ready(function () {
 
       result.forEach((food) => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
-        console.log("food", food);
+        // console.log("food", food);
         console.log(caloriesConsumed);
 
         progress = (caloriesConsumed / parseFloat(totalCalories)) * 100;
@@ -151,15 +149,11 @@ $(document).ready(function () {
     });
   }
 
-  // function deleteFoodItem(data){
-  //   var deleteBtn = $("#delete");
-  //   deleteBtn.on("click", function(event){
-  //     console.log("delete hit");
-  //     // const id = //grad the id
-  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
-  //     //   getDailyIntake();
-
-  //     // });
-  //   })
+  // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
+  // function deleteFoodItem(id) {
+  //   console.log("delete hit", id);
+  //   $.delete(`/api/deleteIntake/${id}`).then(function (result) {
+  //     getDailyIntake();
+  //   });
   // }
 });
