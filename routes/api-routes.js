@@ -48,7 +48,8 @@ module.exports = function (app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        progress: req.user.progress
+        progress: req.user.progress,
+        totalCalories: req.user.totalCalories
       });
     }
   });
@@ -84,4 +85,18 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+
+  app.put("/api/progress", function(req, res) {
+    console.log(req.body);
+    db.User.update(
+        req.body,
+        {
+            where: {
+              id: req.user.id
+            }
+        }).then(function(dbUser) {
+          console.log(dbUser);
+            res.json(dbUser);
+        });
+    });
 };
