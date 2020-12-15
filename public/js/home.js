@@ -11,7 +11,7 @@ $(document).ready(function () {
     } else {
       eat.css("color", "red");
     }
-  };
+  }
 
   $.get("/api/progress").then(function (data) {
     console.log(data);
@@ -20,12 +20,11 @@ $(document).ready(function () {
     console.log(progress, totalCalories);
 
     updateProgressColor();
-    
+
     progressEl.text(parseInt(progress) + "%");
-  
 
     // call function to get all food items of logged in user
-    getDailyIntake(); 
+    getDailyIntake();
   });
 
   var searchBtn = $("#search");
@@ -103,15 +102,6 @@ $(document).ready(function () {
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
         getDailyIntake();
-      //   $(".foodList").append(`
-      //   <div class="card text-center">
-      //   <div class="card-header">
-      //     Today's food
-      //     </div>
-      //   <div class="card-body bg-success">
-      //     <p class="card-text">${nameVal}</p>
-      //   </div>
-      // `),   
       });
     });
   }
@@ -126,10 +116,11 @@ $(document).ready(function () {
             //clear the nutrientsList before adding new item
             $(".nutrientsList").empty();
 
-      result.forEach(food => {
+      result.forEach((food) => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
-        console.log("food", food);
+        // console.log("food", food);
         console.log(caloriesConsumed);
+
 
         if (parseFloat(totalCalories) === 0) {
           progress = 0;
@@ -140,17 +131,14 @@ $(document).ready(function () {
         
         console.log(progress);
 
-          $.ajax({
-              method: "PUT",
-              url: "/api/progress",
-              data: {progress: progress}
-          }).then(function(result) {
-            progressEl.text(parseInt(progress) + "%");
-            updateProgressColor();
-          });
-
-
-        
+        $.ajax({
+          method: "PUT",
+          url: "/api/progress",
+          data: { progress: progress },
+        }).then(function (result) {
+          progressEl.text(parseInt(progress) + "%");
+          updateProgressColor();
+        });
 
         $(".nutrientsList").append(`
         <tr>
@@ -161,10 +149,20 @@ $(document).ready(function () {
           <td>${food.Nutrients[0].fiber}</td>
           <td>${food.Nutrients[0].protein}</td>
         </tr>
-      `)
+      `);
       });
 
       //display result data
     });
   }
+
+
+  // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
+  // function deleteFoodItem(id) {
+  //   console.log("delete hit", id);
+  //   $.delete(`/api/deleteIntake/${id}`).then(function (result) {
+  //     getDailyIntake();
+  //   });
+  // }
+
 });
