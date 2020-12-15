@@ -1,5 +1,3 @@
-// const { Cookie } = require("express-session");
-
 $(document).ready(function () {
   var progress, totalCalories;
   //use GET request to figure out which user is logged in
@@ -7,9 +5,9 @@ $(document).ready(function () {
   var progressEl = $("#progress");
   function updateProgressColor() {
     if (parseFloat(progress) < 80) {
-      eat.css("color", "#93c54b");
-    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
       eat.css("color", "orange");
+    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
+      eat.css("color", "#93c54b");
     } else {
       eat.css("color", "red");
     }
@@ -125,8 +123,8 @@ $(document).ready(function () {
       console.log("all food item of logged in user ", result);
       var caloriesConsumed = 0;
 
-      //clear the nutrientsList before adding new item
-      $(".nutrientsList").empty();
+            //clear the nutrientsList before adding new item
+            $(".nutrientsList").empty();
 
       result.forEach(food => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
@@ -162,21 +160,5 @@ $(document).ready(function () {
 
       //display result data
     });
-   
   }
-
-
-
-  // function deleteFoodItem(data){
-  //   var deleteBtn = $("#delete");
-  //   deleteBtn.on("click", function(event){    
-  //     console.log("delete hit");
-  //     // const id = //grad the id
-  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
-  //     //   getDailyIntake();
-         
-  //     // });
-  //   })
-  // }
-  
 });
