@@ -1,3 +1,5 @@
+// const { Cookie } = require("express-session");
+
 $(document).ready(function () {
   var progress, totalCalories;
   //use GET request to figure out which user is logged in
@@ -123,6 +125,9 @@ $(document).ready(function () {
       console.log("all food item of logged in user ", result);
       var caloriesConsumed = 0;
 
+      //clear the nutrientsList before adding new item
+      $(".nutrientsList").empty();
+
       result.forEach(food => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
         console.log("food", food);
@@ -157,5 +162,21 @@ $(document).ready(function () {
 
       //display result data
     });
+   
   }
+
+
+
+  // function deleteFoodItem(data){
+  //   var deleteBtn = $("#delete");
+  //   deleteBtn.on("click", function(event){    
+  //     console.log("delete hit");
+  //     // const id = //grad the id
+  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
+  //     //   getDailyIntake();
+         
+  //     // });
+  //   })
+  // }
+  
 });
