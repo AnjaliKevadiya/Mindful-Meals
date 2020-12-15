@@ -149,15 +149,11 @@ $(document).ready(function () {
     });
   }
 
-  // function deleteFoodItem(data){
-  //   var deleteBtn = $("#delete");
-  //   deleteBtn.on("click", function(event){
-  //     console.log("delete hit");
-  //     // const id = //grad the id
-  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
-  //     //   getDailyIntake();
-
-  //     // });
-  //   })
+  // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
+  // function deleteFoodItem(id) {
+  //   console.log("delete hit", id);
+  //   $.delete(`/api/deleteIntake/${id}`).then(function (result) {
+  //     getDailyIntake();
+  //   });
   // }
 });
