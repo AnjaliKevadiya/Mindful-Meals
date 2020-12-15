@@ -4,10 +4,10 @@ $(document).ready(function () {
   var eat = $(".fa-carrot");
   var progressEl = $("#progress");
   function updateProgressColor() {
-    if (parseInt(progress) < 90) {
-      eat.css("color", "orange");
-    } else if (parseInt(progress) >= 90 && parseInt(progress) < 150) {
+    if (parseFloat(progress) < 80) {
       eat.css("color", "#93c54b");
+    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
+      eat.css("color", "orange");
     } else {
       eat.css("color", "red");
     }
