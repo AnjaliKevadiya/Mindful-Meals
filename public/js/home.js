@@ -1,6 +1,33 @@
+// const { Cookie } = require("express-session");
+
 $(document).ready(function () {
-  // call function to get all food items of logged in user
-  getDailyIntake();
+  var progress, totalCalories;
+  //use GET request to figure out which user is logged in
+  var eat = $(".fa-carrot");
+  var progressEl = $("#progress");
+  function updateProgressColor() {
+    if (parseFloat(progress) < 80) {
+      eat.css("color", "#93c54b");
+    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
+      eat.css("color", "orange");
+    } else {
+      eat.css("color", "red");
+    }
+  }
+
+  $.get("/api/user_data").then(function (data) {
+    console.log(data);
+    progress = data.progress;
+    totalCalories = data.totalCalories;
+    console.log(progress, totalCalories);
+
+    updateProgressColor();
+
+    progressEl.text(parseInt(progress) + "%");
+
+    // call function to get all food items of logged in user
+    getDailyIntake();
+  });
 
   var searchBtn = $("#search");
   var searchInput = $("#input-search");
@@ -83,14 +110,30 @@ $(document).ready(function () {
 
   function getDailyIntake() {
     const id = Cookies.get("id");
+    console.log(id);
     $.get(`/api/getIntake/${id}`).then(function (result) {
-      // console.log("all food item of logged in user ", result);
+      console.log("all food item of logged in user ", result);
+      var caloriesConsumed = 0;
 
       //clear the nutrientsList before adding new item
       $(".nutrientsList").empty();
 
       result.forEach((food) => {
+        caloriesConsumed += parseFloat(food.Nutrients[0].calories);
         console.log("food", food);
+        console.log(caloriesConsumed);
+
+        progress = (caloriesConsumed / parseFloat(totalCalories)) * 100;
+        console.log(progress);
+
+        $.ajax({
+          method: "PUT",
+          url: "/api/progress",
+          data: { progress: progress },
+        }).then(function (result) {
+          progressEl.text(parseInt(progress) + "%");
+          updateProgressColor();
+        });
 
         $(".nutrientsList").append(`
         <tr>
@@ -103,6 +146,20 @@ $(document).ready(function () {
         </tr>
       `);
       });
+
+      //display result data
     });
   }
+
+  // function deleteFoodItem(data){
+  //   var deleteBtn = $("#delete");
+  //   deleteBtn.on("click", function(event){
+  //     console.log("delete hit");
+  //     // const id = //grad the id
+  //     // $.get(`/api/deleteIntake/${id}`).then(function (result) {
+  //     //   getDailyIntake();
+
+  //     // });
+  //   })
+  // }
 });
