@@ -95,4 +95,16 @@ module.exports = function (app) {
       res.json(dbUser);
     });
   });
+    app.get("/api/progress", function(req, res) {
+      console.log(req.body);
+      db.User.findOne(
+          {
+              where: {
+                id: req.user.id
+              }
+          }).then(function(dbUser) {
+            console.log(dbUser);
+              res.json({progress:dbUser.progress, totalCalories:dbUser.totalCalories});
+          });
+      });
 };

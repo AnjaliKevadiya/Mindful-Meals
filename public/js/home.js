@@ -5,15 +5,15 @@ $(document).ready(function () {
   var progressEl = $("#progress");
   function updateProgressColor() {
     if (parseFloat(progress) < 80) {
-      eat.css("color", "#93c54b");
-    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
       eat.css("color", "orange");
+    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
+      eat.css("color", "#93c54b");
     } else {
       eat.css("color", "red");
     }
   }
 
-  $.get("/api/user_data").then(function (data) {
+  $.get("/api/progress").then(function (data) {
     console.log(data);
     progress = data.progress;
     totalCalories = data.totalCalories;
@@ -113,15 +113,22 @@ $(document).ready(function () {
       console.log("all food item of logged in user ", result);
       var caloriesConsumed = 0;
 
-      //clear the nutrientsList before adding new item
-      $(".nutrientsList").empty();
+            //clear the nutrientsList before adding new item
+            $(".nutrientsList").empty();
 
       result.forEach((food) => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
         // console.log("food", food);
         console.log(caloriesConsumed);
 
-        progress = (caloriesConsumed / parseFloat(totalCalories)) * 100;
+
+        if (parseFloat(totalCalories) === 0) {
+          progress = 0;
+        }
+        else {
+        progress = (caloriesConsumed/parseFloat(totalCalories)) * 100;
+        }
+        
         console.log(progress);
 
         $.ajax({
@@ -149,6 +156,7 @@ $(document).ready(function () {
     });
   }
 
+
   // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
   // function deleteFoodItem(id) {
   //   console.log("delete hit", id);
@@ -156,4 +164,5 @@ $(document).ready(function () {
   //     getDailyIntake();
   //   });
   // }
+
 });
