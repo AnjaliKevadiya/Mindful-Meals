@@ -75,7 +75,7 @@ module.exports = function (app) {
       contactObj.phonenumber = req.body.phonenumber;
     }
 
-    db.Contact.create(contactObj)
+    db.Contacts.create(contactObj)
       .then(function () {
         res.json(contactObj);
       })
