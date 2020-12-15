@@ -1,5 +1,3 @@
-// const { Cookie } = require("express-session");
-
 $(document).ready(function () {
   var progress, totalCalories;
   //use GET request to figure out which user is logged in
@@ -120,7 +118,7 @@ $(document).ready(function () {
 
       result.forEach((food) => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
-        console.log("food", food);
+        // console.log("food", food);
         console.log(caloriesConsumed);
 
         progress = (caloriesConsumed / parseFloat(totalCalories)) * 100;
