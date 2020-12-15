@@ -1,8 +1,31 @@
-const { Cookie } = require("express-session");
-
 $(document).ready(function () {
-  // call function to get all food items of logged in user
-  getDailyIntake();
+  var progress, totalCalories;
+  //use GET request to figure out which user is logged in
+  var eat = $(".fa-carrot");
+  var progressEl = $("#progress");
+  function updateProgressColor() {
+    if (parseFloat(progress) < 80) {
+      eat.css("color", "orange");
+    } else if (parseFloat(progress) >= 80 && parseFloat(progress) < 100) {
+      eat.css("color", "#93c54b");
+    } else {
+      eat.css("color", "red");
+    }
+  }
+
+  $.get("/api/progress").then(function (data) {
+    console.log(data);
+    progress = data.progress;
+    totalCalories = data.totalCalories;
+    console.log(progress, totalCalories);
+
+    updateProgressColor();
+
+    progressEl.text(parseInt(progress) + "%");
+
+    // call function to get all food items of logged in user
+    getDailyIntake();
+  });
 
   var searchBtn = $("#search");
   var searchInput = $("#input-search");
@@ -79,27 +102,44 @@ $(document).ready(function () {
       $.post("/api/addIntake", foodData).then(function (result) {
         console.log(result);
         getDailyIntake();
-      //   $(".foodList").append(`
-      //   <div class="card text-center">
-      //   <div class="card-header">
-      //     Today's food
-      //     </div>
-      //   <div class="card-body bg-success">
-      //     <p class="card-text">${nameVal}</p>
-      //   </div>
-      // `),   
       });
     });
   }
 
   function getDailyIntake() {
     const id = Cookies.get("id");
+    console.log(id);
     $.get(`/api/getIntake/${id}`).then(function (result) {
       console.log("all food item of logged in user ", result);
+      var caloriesConsumed = 0;
 
-      result.forEach(food => {
-        cal += food.Nutrients[0].calories
-        console.log("food", food);
+            //clear the nutrientsList before adding new item
+            $(".nutrientsList").empty();
+
+      result.forEach((food) => {
+        caloriesConsumed += parseFloat(food.Nutrients[0].calories);
+        // console.log("food", food);
+        console.log(caloriesConsumed);
+
+
+        if (parseFloat(totalCalories) === 0) {
+          progress = 0;
+        }
+        else {
+        progress = (caloriesConsumed/parseFloat(totalCalories)) * 100;
+        }
+        
+        console.log(progress);
+
+        $.ajax({
+          method: "PUT",
+          url: "/api/progress",
+          data: { progress: progress },
+        }).then(function (result) {
+          progressEl.text(parseInt(progress) + "%");
+          updateProgressColor();
+        });
+
         $(".nutrientsList").append(`
         <tr>
           <th scope="row">${food.name_of_food}</th>
@@ -109,12 +149,20 @@ $(document).ready(function () {
           <td>${food.Nutrients[0].fiber}</td>
           <td>${food.Nutrients[0].protein}</td>
         </tr>
-      `)
-      }
-      );
-     
+      `);
+      });
 
       //display result data
     });
   }
+
+
+  // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
+  // function deleteFoodItem(id) {
+  //   console.log("delete hit", id);
+  //   $.delete(`/api/deleteIntake/${id}`).then(function (result) {
+  //     getDailyIntake();
+  //   });
+  // }
+
 });

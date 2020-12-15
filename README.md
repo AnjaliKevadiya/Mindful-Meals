@@ -1,14 +1,53 @@
-# project2
-front end:
--create sign up and sign in page for users to create a profile
--create home page to show if user succesfully signs in
--first time log in prompt goals quiz
--create place for user to search food and see nutrition information
--create a button to add food item to diet plan
--create profile screen (first name, last name, height, current weight, target weight)
+# Mindful Meals
 
-back end:
--create a database and a server
--store users sign up to the database(use passport)
--create a user database(first time log in)
--whipe users data depending on the date(using moment.js)
+## Table of Contents
+
+- [Description](#description)
+
+- [Technologies Used](#technologies-used)
+
+- [Installation](#installation)
+
+- [Preview](#preview)
+
+- [Questions](#questions)
+
+## Description
+
+Sometimes it can be hard to keep track of your daily intake of nutrients. With the help of our app it will become easier to keep track of your daily intake each day. Just eating healthy sometimes isn't enough, you must eat the correct amount of healthy food. Knowing exactly which nutrients you are putting in your body will help to lead a healthier lifestyle.
+
+## Technologies Used
+
+**Language:** Node.js, HTML, CSS
+
+**Dependencies:** Axios, Bcryptjs, Express, Express-session, Js-cookie, Mysql2, Passport, Passport-local, Sequelizer
+
+**Version Control Software:** Git and GitHub
+
+**Cloud Platform:** Heroku
+
+## Installation
+
+To install necessary dependencies, run the following command:
+
+```
+npm i
+```
+
+OR
+
+```
+npm install
+```
+
+## Preview
+
+---
+
+<!-- ## <img src="./public/assets/images/home.png"> -->
+
+---
+
+## Questions
+
+If you have any questions about the repo, open issue or contact us directly at [mindfulmeals@gmail.com](mindfulmeals@gmail.com).

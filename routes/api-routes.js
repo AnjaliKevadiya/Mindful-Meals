@@ -48,22 +48,21 @@ module.exports = function (app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        progress: req.user.progress
+        progress: req.user.progress,
+        totalCalories: req.user.totalCalories,
       });
     }
   });
 
-  app.put("/api/user_data", function(req, res) {
-    db.User.update(
-        req.body,
-        {
-            where: {
-              id: req.user.id
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        });
+  app.put("/api/user_data", function (req, res) {
+    db.User.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
+  });
 
   app.post("/api/contact", function (req, res) {
     var contactObj = {
@@ -76,7 +75,7 @@ module.exports = function (app) {
       contactObj.phonenumber = req.body.phonenumber;
     }
 
-    db.Contact.create(contactObj)
+    db.Contacts.create(contactObj)
       .then(function () {
         res.json(contactObj);
       })
@@ -84,4 +83,28 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+
+  app.put("/api/progress", function (req, res) {
+    console.log(req.body);
+    db.User.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+    }).then(function (dbUser) {
+      console.log(dbUser);
+      res.json(dbUser);
+    });
+  });
+    app.get("/api/progress", function(req, res) {
+      console.log(req.body);
+      db.User.findOne(
+          {
+              where: {
+                id: req.user.id
+              }
+          }).then(function(dbUser) {
+            console.log(dbUser);
+              res.json({progress:dbUser.progress, totalCalories:dbUser.totalCalories});
+          });
+      });
 };
