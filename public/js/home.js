@@ -113,22 +113,20 @@ $(document).ready(function () {
       console.log("all food item of logged in user ", result);
       var caloriesConsumed = 0;
 
-            //clear the nutrientsList before adding new item
-            $(".nutrientsList").empty();
+      //clear the nutrientsList before adding new item
+      $(".nutrientsList").empty();
 
       result.forEach((food) => {
         caloriesConsumed += parseFloat(food.Nutrients[0].calories);
         // console.log("food", food);
         console.log(caloriesConsumed);
 
-
         if (parseFloat(totalCalories) === 0) {
           progress = 0;
+        } else {
+          progress = (caloriesConsumed / parseFloat(totalCalories)) * 100;
         }
-        else {
-        progress = (caloriesConsumed/parseFloat(totalCalories)) * 100;
-        }
-        
+
         console.log(progress);
 
         $.ajax({
@@ -156,7 +154,6 @@ $(document).ready(function () {
     });
   }
 
-
   // <td><button type="button" onclick="deleteFoodItem(${food.id})" class="btn btn-danger delete-food">Danger</button></td>
   // function deleteFoodItem(id) {
   //   console.log("delete hit", id);
@@ -164,5 +161,4 @@ $(document).ready(function () {
   //     getDailyIntake();
   //   });
   // }
-
 });
