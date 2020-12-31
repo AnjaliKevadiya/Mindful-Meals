@@ -10,6 +10,8 @@
 
 - [Deployed Link](#deployed-link)
 
+- [Preview](#preview)
+
 - [Questions](#questions)
 
 ## Description
@@ -19,8 +21,6 @@ Sometimes it can be hard to keep track of your daily intake of nutrients. With t
 ## Technologies Used
 
 **Language:** Node.js, HTML, CSS
-
-**Database:** MySQL
 
 **Dependencies:** Axios, Bcryptjs, Express, Express-session, Js-cookie, Mysql2, Passport, Passport-local, Sequelizer
 
@@ -43,6 +43,14 @@ npm install
 ```
 
 ## [Deployed Link](https://mindful-meals-bc.herokuapp.com/)
+
+## Preview
+
+---
+
+## <img src="./public/assets/images/mindful-meals.png">
+
+---
 
 ## Questions
 
