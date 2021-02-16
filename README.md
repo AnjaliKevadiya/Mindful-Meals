@@ -8,6 +8,8 @@
 
 - [Installation](#installation)
 
+- [Deployed Link](#deployed-link)
+
 - [Preview](#preview)
 
 - [Questions](#questions)
@@ -40,11 +42,13 @@ OR
 npm install
 ```
 
+## [Deployed Link](https://mindful-meals-bc.herokuapp.com/)
+
 ## Preview
 
 ---
 
-<!-- ## <img src="./public/assets/images/home.png"> -->
+## <img src="./public/assets/images/mindful-meals.png">
 
 ---
 
